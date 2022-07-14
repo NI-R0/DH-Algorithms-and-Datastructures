@@ -76,14 +76,54 @@ Set removeValue(Set s, int v) {
 	}
 }
 
-void printSet(Set s){}
+void printSet(Set s){
+
+	printf("\nSet = {");
+	for (int i = 0; i < 32; i++) {
+		if (CHECK_BIT(s->set, i)) {
+			printf("%d, ", s->min + i);
+		}
+	}
+	printf("}");
+	printf("\nSet as binary: ");
+	for (int i = 0; i < 32; i++) {
+		if (CHECK_BIT(s->set, i)) {
+			printf("1");
+		}
+		else {
+			printf("0");
+		}
+	}
+	printf("\n\n");
+	return;
+}
 
 Set combine(Set s1, Set s2) {
-	return s1;
+	Set t = createSet();
+	if (s1->min == s2->min) {
+		t->min = s1->min;
+		t->max = s1->max;
+		t->set = (s1->set | s2->set);
+		return t;
+	}
+	else {
+		printf("5");
+		abort();
+	}
 }
 
 Set average(Set s1, Set s2) {
-	return s1;
+	Set t = createSet();
+	if (s1->min == s2->min) {
+		t->min = s1->min;
+		t->max = s1->max;
+		t->set = (s1->set & s2->set);
+		return t;
+	}
+	else {
+		printf("5");
+		abort();
+	}
 }
 
 int isInSet(Set s, int v) {

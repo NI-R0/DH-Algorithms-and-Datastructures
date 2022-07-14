@@ -9,14 +9,19 @@ int main(int argc, char* argv[]) {
 	printf("%d", i);*/
 
 	Set s = createSet();
+	Set t = createSet();
 
 	s = add(s, 5);
+	t = add(t, 5);
 
 	s = add(s, 8);
+	t = add(t, 15);
 
-	s = removeValue(s, 5);
+	s = add(s, 32);
 
-	printf("%d", s->set);
+	t = average(s, t);
+
+	printSet(t);
 
 
 	
