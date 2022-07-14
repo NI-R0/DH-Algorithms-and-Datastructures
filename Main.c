@@ -13,6 +13,12 @@ int main(int argc, char* argv[]) {
 	s = add(s, 5);
 
 	s = add(s, 8);
+
+	s = removeValue(s, 5);
+
+	printf("%d", s->set);
+
+
 	
 	return 0;
 }

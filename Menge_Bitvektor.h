@@ -2,7 +2,10 @@
 #ifndef MENGE_BITVEKTOR_H
 #define MENGE_BITVEKTOR_H
 
+#define CHECK_BIT(var, pos) ((var) & (1<<(pos)))
+
 #include <stdio.h>
+#include <math.h>
 #include <stdlib.h>
 
 typedef struct tBase_32* Set;

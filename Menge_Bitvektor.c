@@ -38,9 +38,14 @@ Set add(Set s, int v) {
 	}
 	else {
 		if (isInRange(s, v)) {
-			int dist = v - s->min;
-			s->set += 1 << dist;
-			return s;
+			if (!isInSet(s, v)) {
+				int dist = v - s->min;
+				s->set += 1 << dist;
+				return s;
+			}
+			else {
+				return s;
+			}
 		}
 		else {
 			printf("3");
@@ -50,7 +55,25 @@ Set add(Set s, int v) {
 }
 
 Set removeValue(Set s, int v) {
-	return s;
+	if (isEmpty(s)) {
+		printf("4");
+		abort();
+	}
+	else {
+		if (isInRange(s, v)) {
+			if (isInSet(s, v)) {
+				int dist = v - s->min;
+				s->set -= (int)pow((double)2, (double)dist);
+				return s;
+			}
+			else {
+				return s;
+			}
+		}
+		else {
+			return s;
+		}
+	}
 }
 
 void printSet(Set s){}
@@ -63,6 +86,18 @@ Set average(Set s1, Set s2) {
 	return s1;
 }
 
-int isInSet(Set s1, int v) {
+int isInSet(Set s, int v) {
+	v -= s->min;
+
+	if (isEmpty(s)) {
+		return 0;
+	}
+	else {
+		if (CHECK_BIT(s->set, v)) {
+			return 1;
+		}
+		return 0;
+	}
+
 	return 0;
 }
